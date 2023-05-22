@@ -143,7 +143,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                         Text(
                           ConvertTempText(
                             isCelsius: isCelsius,
-                            value: temp as double,
+                            value: temp,
                             unit: true,
                           ),
                           style: text70_black_B,
@@ -156,7 +156,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                             Text(
                               'Feels like: ${ConvertTempText(
                                 isCelsius: isCelsius,
-                                value: tempFeel as double,
+                                value: tempFeel,
                                 unit: false,
                               )}',
                               style: text16_black,
@@ -172,7 +172,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                                 Text(
                                   ConvertTempText(
                                     isCelsius: isCelsius,
-                                    value: tempMax as double,
+                                    value: tempMax,
                                     unit: false,
                                   ),
                                   style: text16_black,
@@ -189,7 +189,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                                 Text(
                                   ConvertTempText(
                                     isCelsius: isCelsius,
-                                    value: tempMin as double,
+                                    value: tempMin,
                                     unit: false,
                                   ),
                                   style: text16_black,

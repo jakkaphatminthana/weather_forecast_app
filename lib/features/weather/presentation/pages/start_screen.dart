@@ -21,7 +21,7 @@ class _StartScreenState extends ConsumerState<StartScreen> {
     super.dispose();
   }
 
-  //TODO 1: Submit Button
+  //TODO 1: Submit Save data
   void _submit() async {
     if (addressController.text.isEmpty) return;
 
@@ -33,7 +33,7 @@ class _StartScreenState extends ConsumerState<StartScreen> {
         .read(addressServiceProvider)
         .getAddressByName(name: ref.read(searchInput));
 
-    //set List Search_result_provider
+    //set data result search list
     ref.read(searchResultProvider.notifier).state = await getAddress;
   }
 

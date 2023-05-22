@@ -4,12 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_weather_forecast/features/weather/data/services/address_service.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/address_provider.dart';
-import 'package:flutter_weather_forecast/features/weather/domain/providers/weather_hour_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/search_listtile.dart';
 import 'package:flutter_weather_forecast/resources/theme_color.dart';
-
-import '../../data/models/address_model.dart';
-import '../../domain/providers/weather_current_provider.dart';
 import 'weather_current_screen.dart';
 
 class AddressSearchScreen extends ConsumerStatefulWidget {

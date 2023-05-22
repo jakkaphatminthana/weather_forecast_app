@@ -4,9 +4,11 @@ import 'package:flutter_weather_forecast/features/weather/domain/providers/addre
 import '../../data/services/weather_current_service.dart';
 
 final weatherCurrFutureProvider =
-    FutureProvider.autoDispose<CurrentWeatherEntity>((ref) async {
-  return ref.watch(weatherServiceProvider).getCurrentWeather(
-        lat: ref.watch(latProvider),
-        lon: ref.watch(lonProvider),
-      );
-},);
+    FutureProvider.autoDispose<CurrentWeatherEntity>(
+  (ref) async {
+    return ref.watch(weatherServiceProvider).getCurrentWeather(
+          lat: ref.watch(latProvider),
+          lon: ref.watch(lonProvider),
+        );
+  },
+);
