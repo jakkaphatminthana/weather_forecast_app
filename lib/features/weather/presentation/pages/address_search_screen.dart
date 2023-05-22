@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_weather_forecast/features/weather/data/services/address_service.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/address_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/weather_hour_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/search_listtile.dart';
@@ -21,27 +22,41 @@ class AddressSearchScreen extends ConsumerStatefulWidget {
 class _TestScreen3State extends ConsumerState<AddressSearchScreen> {
   final TextEditingController _inputText = TextEditingController();
 
-  //TODO 1: Set input value
-  setInput() {
+  //TODO : Set input value
+  void setInput() {
     _inputText.text = ref.read(searchInput.notifier).state;
   }
 
   //TODO : Sumbit Search
-  submitSearch() async {
+  void submitSearch() async {
     //update input provider
-    final setInput = ref.read(searchInput.notifier).state = _inputText.text;
+    ref.read(searchInput.notifier).state = _inputText.text;
     final search = ref.read(searchInput);
 
     //fetch data
     final fetch =
-        await ref.read(addressDataProvider).getAddressByName(name: search);
+        ref.read(addressServiceProvider).getAddressByName(name: search);
 
     //update result search list
-    final updateList =
-        ref.watch(searchResultProvider.notifier).state = await fetch;
+    ref.read(searchResultProvider.notifier).state = await fetch;
 
-    log('setInput: $setInput');
     log('fetch: $fetch');
+  }
+
+  //TODO : Update Location
+  void updateLatLon({required lat, required lon}) {
+    ref.read(latProvider.notifier).state = lat;
+    ref.read(lonProvider.notifier).state = lon;
+  }
+
+  //TODO : Navigator to Page
+  void navigatorPage() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const WeatherCurrentScreen(),
+      ),
+    );
   }
 
   @override
@@ -53,9 +68,16 @@ class _TestScreen3State extends ConsumerState<AddressSearchScreen> {
     });
   }
 
+  @override
+  void dispose() {
+    _inputText.dispose();
+    super.dispose();
+  }
+
   //===========================================================================================================================
   @override
   Widget build(BuildContext context) {
+    final searchResult = ref.watch(searchResultProvider);
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: ThemeColor.iconColor),
@@ -80,47 +102,29 @@ class _TestScreen3State extends ConsumerState<AddressSearchScreen> {
           ),
         ],
       ),
-      body: Consumer(builder: (context, ref, child) {
-        final List<AddressModel> searchResult = ref.watch(searchResultProvider);
-        log('searchResult : $searchResult');
+      body: ListView.builder(
+        itemCount: searchResult.length,
+        itemBuilder: (context, index) {
+          final address = searchResult[index];
 
-        //TODO : Show result
-        return ListView.builder(
-          itemCount: searchResult.length,
-          itemBuilder: (context, index) {
-            final address = searchResult[index];
+          //TODO : ListTile City
+          return GestureDetector(
+            onTap: () {
+              //update lon, lat
+              updateLatLon(lat: address.lat, lon: address.lon);
+              log('cityOnSearch : ${address.name}');
 
-            return GestureDetector(
-              //TODO : Update Location Provider
-              onTap: () {
-                //update lon, lat
-                ref.read(latProvider.notifier).state = address.lat;
-                ref.read(lonProvider.notifier).state = address.lon;
-
-                //update weatherCurrent, Hour
-                ref.read(weatherCurrFutureProvider);
-                ref.read(weatherHourFutureProvider);
-
-                final cityOnSearch = address.name;
-                log('cityOnSearch : $cityOnSearch');
-
-                //go to weather current page
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const WeatherCurrentScreen(),
-                  ),
-                );
-              },
-              child: SearchResultListTile(
-                title: address.name,
-                country: address.country,
-                context: context,
-              ),
-            );
-          },
-        );
-      }),
+              //go to weather current page
+              navigatorPage();
+            },
+            child: SearchResultListTile(
+              title: address.name,
+              country: address.country,
+              context: context,
+            ),
+          );
+        },
+      ),
     );
   }
 }

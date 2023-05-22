@@ -26,6 +26,33 @@ class WeatherCurrentScreen extends ConsumerStatefulWidget {
 }
 
 class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
+  //Swap Value
+  void SwapModeCelsius() {
+    final isCelsiu = ref.read(isCelsiusProvider);
+    if (isCelsiu) {
+      ref.read(isCelsiusProvider.notifier).state = false;
+    } else {
+      ref.read(isCelsiusProvider.notifier).state = true;
+    }
+  }
+
+  //Navigator to Hours page
+  void navigatorToHour() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const WeatherHourScreen()),
+    );
+  }
+
+  //Navigator to Hours page
+  void navigatorToSearch() {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const AddressSearchScreen()),
+    );
+  }
+
+//=================================================================================================================================
   @override
   Widget build(BuildContext context) {
     final data = ref.watch(weatherCurrFutureProvider);
@@ -36,25 +63,9 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        leading: IconButtonWeather(Icons.menu, () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => WeatherHourScreen()),
-          );
-        }),
-        actions: [
-          //Swap value button
-          IconButtonWeather(
-            Icons.swap_horiz,
-            () {
-              if (isCelsius) {
-                ref.read(isCelsiusProvider.notifier).state = false;
-              } else {
-                ref.read(isCelsiusProvider.notifier).state = true;
-              }
-            },
-          ),
-        ],
+        leading: IconButtonWeather(Icons.menu, () => navigatorToHour()),
+        //Swap value button
+        actions: [IconButtonWeather(Icons.swap_horiz, () => SwapModeCelsius())],
       ),
       body: data.when(
         data: (_data) {
@@ -64,24 +75,21 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
           final timezone = _data.timezone;
           String formattedDateTime = formatDateTime(timestamp, timezone);
 
-          log('city onPage: $city');
-          log('lat Provider: ${ref.watch(latProvider)}');
-
           //temperature
-          final temp = _data.temperature?.temp;
-          final tempFeel = _data.temperature?.feelsLike;
-          final tempMax = _data.temperature?.tempMax;
-          final tempMin = _data.temperature?.tempMin;
+          final temp = _data.main.temp;
+          final tempFeel = _data.main.feelsLike;
+          final tempMax = _data.main.tempMax;
+          final tempMin = _data.main.tempMin;
           final status = _data.weather?.first.main;
 
           //detail bottom
-          final sunrise = _data.sunTime?.sunRise;
-          final sunset = _data.sunTime?.sunSet;
-          String sunriseFormat = formatUixTimestamp(sunrise!);
-          String sunsetFormat = formatUixTimestamp(sunset!);
-          final humidity = _data.temperature?.humidity;
+          final sunrise = _data.sys.sunRise;
+          final sunset = _data.sys.sunSet;
+          String sunriseFormat = formatUixTimestamp(sunrise);
+          String sunsetFormat = formatUixTimestamp(sunset);
+          final humidity = _data.main.humidity;
           final clouds = _data.clouds.cloud;
-          final pressure = _data.temperature?.pressure;
+          final pressure = _data.main.pressure;
           final wind = _data.wind.speed;
 
           return Container(
@@ -103,14 +111,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                       children: [
                         //Location
                         GestureDetector(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => AddressSearchScreen(),
-                              ),
-                            );
-                          },
+                          onTap: () => navigatorToSearch(),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -118,7 +119,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                               const Icon(
                                 Icons.location_on,
                                 color: ThemeColor.iconColor,
-                              )
+                              ),
                             ],
                           ),
                         ),
@@ -263,7 +264,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                                     DetailCard(
                                       svgAsset:
                                           'assets/svgs/icons8-pressure-48.svg',
-                                      title: '${pressure?.toInt()} hPa',
+                                      title: '${pressure.toInt()} hPa',
                                     ),
                                     DetailCard(
                                       svgAsset:

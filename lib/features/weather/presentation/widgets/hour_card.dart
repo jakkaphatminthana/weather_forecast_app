@@ -29,7 +29,7 @@ Widget HourCard({
         ),
         child: GestureDetector(
           onTap: () {
-            ref.read(cardIndexProvider.notifier).state = index;
+            ref.read(cardIndexProvider.notifier).state = index; //set new index
           },
           child: Container(
             width: MediaQuery.of(context).size.width * 0.14,
@@ -53,7 +53,7 @@ Widget HourCard({
   });
 }
 //======================================================================================================================
-
+//Action
 BoxDecoration _actionStyle() {
   return BoxDecoration(
     color: ThemeColor.cardActionColor,
@@ -68,6 +68,7 @@ BoxDecoration _actionStyle() {
   );
 }
 
+//Normal
 BoxDecoration _normalStyle() {
   return BoxDecoration(
     color: ThemeColor.backgroundColor,

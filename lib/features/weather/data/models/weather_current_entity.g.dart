@@ -13,15 +13,11 @@ _$_CurrentWeatherEntity _$$_CurrentWeatherEntityFromJson(
       weather: (json['weather'] as List<dynamic>?)
           ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
-      temperature: json['main'] == null
-          ? null
-          : Temperature.fromJson(json['main'] as Map<String, dynamic>),
+      main: Main.fromJson(json['main'] as Map<String, dynamic>),
       visibility: (json['visibility'] as num).toDouble(),
       wind: Wind.fromJson(json['wind'] as Map<String, dynamic>),
       clouds: Clouds.fromJson(json['clouds'] as Map<String, dynamic>),
-      sunTime: json['sys'] == null
-          ? null
-          : SunTime.fromJson(json['sys'] as Map<String, dynamic>),
+      sys: Sys.fromJson(json['sys'] as Map<String, dynamic>),
       timezone: json['timezone'] as int,
       dt: json['dt'] as int,
       name: json['name'] as String,
@@ -32,11 +28,11 @@ Map<String, dynamic> _$$_CurrentWeatherEntityToJson(
     <String, dynamic>{
       'coord': instance.coord,
       'weather': instance.weather,
-      'main': instance.temperature,
+      'main': instance.main,
       'visibility': instance.visibility,
       'wind': instance.wind,
       'clouds': instance.clouds,
-      'sys': instance.sunTime,
+      'sys': instance.sys,
       'timezone': instance.timezone,
       'dt': instance.dt,
       'name': instance.name,

@@ -21,6 +21,18 @@ class WeatherHourScreen extends ConsumerStatefulWidget {
 }
 
 class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
+
+  //Swap Value
+  void SwapModeCelsius() {
+    final isCelsiu = ref.read(isCelsiusProvider);
+    if (isCelsiu) {
+      ref.read(isCelsiusProvider.notifier).state = false;
+    } else {
+      ref.read(isCelsiusProvider.notifier).state = true;
+    }
+  }
+
+//=====================================================================================================================================
   @override
   Widget build(BuildContext context) {
     final data = ref.watch(weatherHourFutureProvider);
@@ -35,17 +47,8 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
         elevation: 0,
         iconTheme: const IconThemeData(color: ThemeColor.iconColor),
         actions: [
-          //TODO : Swap Value Celsius
-          IconButtonWeather(
-            Icons.swap_horiz,
-            () {
-              if (isCelsius) {
-                ref.read(isCelsiusProvider.notifier).state = false;
-              } else {
-                ref.read(isCelsiusProvider.notifier).state = true;
-              }
-            },
-          ),
+          //Swap Value Celsius
+          IconButtonWeather(Icons.swap_horiz, () => SwapModeCelsius()),
         ],
       ),
       body: data.when(
@@ -99,7 +102,6 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                         padding: const EdgeInsets.all(10),
                         child: Column(
                           children: [
-                            
                             //TODO 3: Temperature
                             Container(
                               width: MediaQuery.of(context).size.width,

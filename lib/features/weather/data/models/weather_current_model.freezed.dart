@@ -25,15 +25,15 @@ mixin _$CurrentWeatherModel {
   @JsonKey(name: 'weather')
   List<Weather>? get weather => throw _privateConstructorUsedError;
   @JsonKey(name: 'main')
-  Temperature? get temperature => throw _privateConstructorUsedError;
-  @JsonKey(name: 'visibility')
-  double get visibility => throw _privateConstructorUsedError;
+  Main get main => throw _privateConstructorUsedError;
   @JsonKey(name: 'wind')
   Wind get wind => throw _privateConstructorUsedError;
   @JsonKey(name: 'clouds')
   Clouds get clouds => throw _privateConstructorUsedError;
   @JsonKey(name: 'sys')
-  SunTime? get sunTime => throw _privateConstructorUsedError;
+  Sys get sys => throw _privateConstructorUsedError;
+  @JsonKey(name: 'visibility')
+  double get visibility => throw _privateConstructorUsedError;
   @JsonKey(name: 'timezone')
   int get timezone => throw _privateConstructorUsedError;
   @JsonKey(name: 'dt')
@@ -56,20 +56,20 @@ abstract class $CurrentWeatherModelCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'coord') Coord coord,
       @JsonKey(name: 'weather') List<Weather>? weather,
-      @JsonKey(name: 'main') Temperature? temperature,
-      @JsonKey(name: 'visibility') double visibility,
+      @JsonKey(name: 'main') Main main,
       @JsonKey(name: 'wind') Wind wind,
       @JsonKey(name: 'clouds') Clouds clouds,
-      @JsonKey(name: 'sys') SunTime? sunTime,
+      @JsonKey(name: 'sys') Sys sys,
+      @JsonKey(name: 'visibility') double visibility,
       @JsonKey(name: 'timezone') int timezone,
       @JsonKey(name: 'dt') int dt,
       @JsonKey(name: 'name') String name});
 
   $CoordCopyWith<$Res> get coord;
-  $TemperatureCopyWith<$Res>? get temperature;
+  $MainCopyWith<$Res> get main;
   $WindCopyWith<$Res> get wind;
   $CloudsCopyWith<$Res> get clouds;
-  $SunTimeCopyWith<$Res>? get sunTime;
+  $SysCopyWith<$Res> get sys;
 }
 
 /// @nodoc
@@ -87,11 +87,11 @@ class _$CurrentWeatherModelCopyWithImpl<$Res, $Val extends CurrentWeatherModel>
   $Res call({
     Object? coord = null,
     Object? weather = freezed,
-    Object? temperature = freezed,
-    Object? visibility = null,
+    Object? main = null,
     Object? wind = null,
     Object? clouds = null,
-    Object? sunTime = freezed,
+    Object? sys = null,
+    Object? visibility = null,
     Object? timezone = null,
     Object? dt = null,
     Object? name = null,
@@ -105,14 +105,10 @@ class _$CurrentWeatherModelCopyWithImpl<$Res, $Val extends CurrentWeatherModel>
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as Temperature?,
-      visibility: null == visibility
-          ? _value.visibility
-          : visibility // ignore: cast_nullable_to_non_nullable
-              as double,
+      main: null == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as Main,
       wind: null == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
@@ -121,10 +117,14 @@ class _$CurrentWeatherModelCopyWithImpl<$Res, $Val extends CurrentWeatherModel>
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
               as Clouds,
-      sunTime: freezed == sunTime
-          ? _value.sunTime
-          : sunTime // ignore: cast_nullable_to_non_nullable
-              as SunTime?,
+      sys: null == sys
+          ? _value.sys
+          : sys // ignore: cast_nullable_to_non_nullable
+              as Sys,
+      visibility: null == visibility
+          ? _value.visibility
+          : visibility // ignore: cast_nullable_to_non_nullable
+              as double,
       timezone: null == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
@@ -150,13 +150,9 @@ class _$CurrentWeatherModelCopyWithImpl<$Res, $Val extends CurrentWeatherModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $TemperatureCopyWith<$Res>? get temperature {
-    if (_value.temperature == null) {
-      return null;
-    }
-
-    return $TemperatureCopyWith<$Res>(_value.temperature!, (value) {
-      return _then(_value.copyWith(temperature: value) as $Val);
+  $MainCopyWith<$Res> get main {
+    return $MainCopyWith<$Res>(_value.main, (value) {
+      return _then(_value.copyWith(main: value) as $Val);
     });
   }
 
@@ -178,13 +174,9 @@ class _$CurrentWeatherModelCopyWithImpl<$Res, $Val extends CurrentWeatherModel>
 
   @override
   @pragma('vm:prefer-inline')
-  $SunTimeCopyWith<$Res>? get sunTime {
-    if (_value.sunTime == null) {
-      return null;
-    }
-
-    return $SunTimeCopyWith<$Res>(_value.sunTime!, (value) {
-      return _then(_value.copyWith(sunTime: value) as $Val);
+  $SysCopyWith<$Res> get sys {
+    return $SysCopyWith<$Res>(_value.sys, (value) {
+      return _then(_value.copyWith(sys: value) as $Val);
     });
   }
 }
@@ -200,11 +192,11 @@ abstract class _$$_CurrentWeatherModelCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'coord') Coord coord,
       @JsonKey(name: 'weather') List<Weather>? weather,
-      @JsonKey(name: 'main') Temperature? temperature,
-      @JsonKey(name: 'visibility') double visibility,
+      @JsonKey(name: 'main') Main main,
       @JsonKey(name: 'wind') Wind wind,
       @JsonKey(name: 'clouds') Clouds clouds,
-      @JsonKey(name: 'sys') SunTime? sunTime,
+      @JsonKey(name: 'sys') Sys sys,
+      @JsonKey(name: 'visibility') double visibility,
       @JsonKey(name: 'timezone') int timezone,
       @JsonKey(name: 'dt') int dt,
       @JsonKey(name: 'name') String name});
@@ -212,13 +204,13 @@ abstract class _$$_CurrentWeatherModelCopyWith<$Res>
   @override
   $CoordCopyWith<$Res> get coord;
   @override
-  $TemperatureCopyWith<$Res>? get temperature;
+  $MainCopyWith<$Res> get main;
   @override
   $WindCopyWith<$Res> get wind;
   @override
   $CloudsCopyWith<$Res> get clouds;
   @override
-  $SunTimeCopyWith<$Res>? get sunTime;
+  $SysCopyWith<$Res> get sys;
 }
 
 /// @nodoc
@@ -234,11 +226,11 @@ class __$$_CurrentWeatherModelCopyWithImpl<$Res>
   $Res call({
     Object? coord = null,
     Object? weather = freezed,
-    Object? temperature = freezed,
-    Object? visibility = null,
+    Object? main = null,
     Object? wind = null,
     Object? clouds = null,
-    Object? sunTime = freezed,
+    Object? sys = null,
+    Object? visibility = null,
     Object? timezone = null,
     Object? dt = null,
     Object? name = null,
@@ -252,14 +244,10 @@ class __$$_CurrentWeatherModelCopyWithImpl<$Res>
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as Temperature?,
-      visibility: null == visibility
-          ? _value.visibility
-          : visibility // ignore: cast_nullable_to_non_nullable
-              as double,
+      main: null == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as Main,
       wind: null == wind
           ? _value.wind
           : wind // ignore: cast_nullable_to_non_nullable
@@ -268,10 +256,14 @@ class __$$_CurrentWeatherModelCopyWithImpl<$Res>
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
               as Clouds,
-      sunTime: freezed == sunTime
-          ? _value.sunTime
-          : sunTime // ignore: cast_nullable_to_non_nullable
-              as SunTime?,
+      sys: null == sys
+          ? _value.sys
+          : sys // ignore: cast_nullable_to_non_nullable
+              as Sys,
+      visibility: null == visibility
+          ? _value.visibility
+          : visibility // ignore: cast_nullable_to_non_nullable
+              as double,
       timezone: null == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
@@ -294,11 +286,11 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
   _$_CurrentWeatherModel(
       {@JsonKey(name: 'coord') this.coord = const Coord(),
       @JsonKey(name: 'weather') final List<Weather>? weather,
-      @JsonKey(name: 'main') this.temperature,
-      @JsonKey(name: 'visibility') this.visibility = 0,
+      @JsonKey(name: 'main') this.main = const Main(),
       @JsonKey(name: 'wind') this.wind = const Wind(),
       @JsonKey(name: 'clouds') this.clouds = const Clouds(),
-      @JsonKey(name: 'sys') this.sunTime,
+      @JsonKey(name: 'sys') this.sys = const Sys(),
+      @JsonKey(name: 'visibility') this.visibility = 0,
       @JsonKey(name: 'timezone') this.timezone = 0,
       @JsonKey(name: 'dt') this.dt = 0,
       @JsonKey(name: 'name') this.name = ''})
@@ -323,10 +315,7 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
 
   @override
   @JsonKey(name: 'main')
-  final Temperature? temperature;
-  @override
-  @JsonKey(name: 'visibility')
-  final double visibility;
+  final Main main;
   @override
   @JsonKey(name: 'wind')
   final Wind wind;
@@ -335,7 +324,10 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
   final Clouds clouds;
   @override
   @JsonKey(name: 'sys')
-  final SunTime? sunTime;
+  final Sys sys;
+  @override
+  @JsonKey(name: 'visibility')
+  final double visibility;
   @override
   @JsonKey(name: 'timezone')
   final int timezone;
@@ -348,7 +340,7 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
 
   @override
   String toString() {
-    return 'CurrentWeatherModel(coord: $coord, weather: $weather, temperature: $temperature, visibility: $visibility, wind: $wind, clouds: $clouds, sunTime: $sunTime, timezone: $timezone, dt: $dt, name: $name)';
+    return 'CurrentWeatherModel(coord: $coord, weather: $weather, main: $main, wind: $wind, clouds: $clouds, sys: $sys, visibility: $visibility, timezone: $timezone, dt: $dt, name: $name)';
   }
 
   @override
@@ -358,13 +350,12 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
             other is _$_CurrentWeatherModel &&
             (identical(other.coord, coord) || other.coord == coord) &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
-            (identical(other.temperature, temperature) ||
-                other.temperature == temperature) &&
-            (identical(other.visibility, visibility) ||
-                other.visibility == visibility) &&
+            (identical(other.main, main) || other.main == main) &&
             (identical(other.wind, wind) || other.wind == wind) &&
             (identical(other.clouds, clouds) || other.clouds == clouds) &&
-            (identical(other.sunTime, sunTime) || other.sunTime == sunTime) &&
+            (identical(other.sys, sys) || other.sys == sys) &&
+            (identical(other.visibility, visibility) ||
+                other.visibility == visibility) &&
             (identical(other.timezone, timezone) ||
                 other.timezone == timezone) &&
             (identical(other.dt, dt) || other.dt == dt) &&
@@ -377,11 +368,11 @@ class _$_CurrentWeatherModel implements _CurrentWeatherModel {
       runtimeType,
       coord,
       const DeepCollectionEquality().hash(_weather),
-      temperature,
-      visibility,
+      main,
       wind,
       clouds,
-      sunTime,
+      sys,
+      visibility,
       timezone,
       dt,
       name);
@@ -405,11 +396,11 @@ abstract class _CurrentWeatherModel implements CurrentWeatherModel {
   factory _CurrentWeatherModel(
       {@JsonKey(name: 'coord') final Coord coord,
       @JsonKey(name: 'weather') final List<Weather>? weather,
-      @JsonKey(name: 'main') final Temperature? temperature,
-      @JsonKey(name: 'visibility') final double visibility,
+      @JsonKey(name: 'main') final Main main,
       @JsonKey(name: 'wind') final Wind wind,
       @JsonKey(name: 'clouds') final Clouds clouds,
-      @JsonKey(name: 'sys') final SunTime? sunTime,
+      @JsonKey(name: 'sys') final Sys sys,
+      @JsonKey(name: 'visibility') final double visibility,
       @JsonKey(name: 'timezone') final int timezone,
       @JsonKey(name: 'dt') final int dt,
       @JsonKey(name: 'name') final String name}) = _$_CurrentWeatherModel;
@@ -425,10 +416,7 @@ abstract class _CurrentWeatherModel implements CurrentWeatherModel {
   List<Weather>? get weather;
   @override
   @JsonKey(name: 'main')
-  Temperature? get temperature;
-  @override
-  @JsonKey(name: 'visibility')
-  double get visibility;
+  Main get main;
   @override
   @JsonKey(name: 'wind')
   Wind get wind;
@@ -437,7 +425,10 @@ abstract class _CurrentWeatherModel implements CurrentWeatherModel {
   Clouds get clouds;
   @override
   @JsonKey(name: 'sys')
-  SunTime? get sunTime;
+  Sys get sys;
+  @override
+  @JsonKey(name: 'visibility')
+  double get visibility;
   @override
   @JsonKey(name: 'timezone')
   int get timezone;
@@ -609,50 +600,48 @@ abstract class _Coord implements Coord {
       throw _privateConstructorUsedError;
 }
 
-Temperature _$TemperatureFromJson(Map<String, dynamic> json) {
+Main _$MainFromJson(Map<String, dynamic> json) {
   return _Temperature.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Temperature {
+mixin _$Main {
   @JsonKey(name: 'temp')
-  double? get temp => throw _privateConstructorUsedError;
+  double get temp => throw _privateConstructorUsedError;
   @JsonKey(name: 'feels_like')
-  double? get feelsLike => throw _privateConstructorUsedError;
+  double get feelsLike => throw _privateConstructorUsedError;
   @JsonKey(name: 'temp_min')
-  double? get tempMin => throw _privateConstructorUsedError;
+  double get tempMin => throw _privateConstructorUsedError;
   @JsonKey(name: 'temp_max')
-  double? get tempMax => throw _privateConstructorUsedError;
+  double get tempMax => throw _privateConstructorUsedError;
   @JsonKey(name: 'pressure')
-  double? get pressure => throw _privateConstructorUsedError;
+  double get pressure => throw _privateConstructorUsedError;
   @JsonKey(name: 'humidity')
-  double? get humidity => throw _privateConstructorUsedError;
+  double get humidity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $TemperatureCopyWith<Temperature> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MainCopyWith<Main> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $TemperatureCopyWith<$Res> {
-  factory $TemperatureCopyWith(
-          Temperature value, $Res Function(Temperature) then) =
-      _$TemperatureCopyWithImpl<$Res, Temperature>;
+abstract class $MainCopyWith<$Res> {
+  factory $MainCopyWith(Main value, $Res Function(Main) then) =
+      _$MainCopyWithImpl<$Res, Main>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'temp') double? temp,
-      @JsonKey(name: 'feels_like') double? feelsLike,
-      @JsonKey(name: 'temp_min') double? tempMin,
-      @JsonKey(name: 'temp_max') double? tempMax,
-      @JsonKey(name: 'pressure') double? pressure,
-      @JsonKey(name: 'humidity') double? humidity});
+      {@JsonKey(name: 'temp') double temp,
+      @JsonKey(name: 'feels_like') double feelsLike,
+      @JsonKey(name: 'temp_min') double tempMin,
+      @JsonKey(name: 'temp_max') double tempMax,
+      @JsonKey(name: 'pressure') double pressure,
+      @JsonKey(name: 'humidity') double humidity});
 }
 
 /// @nodoc
-class _$TemperatureCopyWithImpl<$Res, $Val extends Temperature>
-    implements $TemperatureCopyWith<$Res> {
-  _$TemperatureCopyWithImpl(this._value, this._then);
+class _$MainCopyWithImpl<$Res, $Val extends Main>
+    implements $MainCopyWith<$Res> {
+  _$MainCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -662,62 +651,61 @@ class _$TemperatureCopyWithImpl<$Res, $Val extends Temperature>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? temp = freezed,
-    Object? feelsLike = freezed,
-    Object? tempMin = freezed,
-    Object? tempMax = freezed,
-    Object? pressure = freezed,
-    Object? humidity = freezed,
+    Object? temp = null,
+    Object? feelsLike = null,
+    Object? tempMin = null,
+    Object? tempMax = null,
+    Object? pressure = null,
+    Object? humidity = null,
   }) {
     return _then(_value.copyWith(
-      temp: freezed == temp
+      temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      feelsLike: freezed == feelsLike
+              as double,
+      feelsLike: null == feelsLike
           ? _value.feelsLike
           : feelsLike // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tempMin: freezed == tempMin
+              as double,
+      tempMin: null == tempMin
           ? _value.tempMin
           : tempMin // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tempMax: freezed == tempMax
+              as double,
+      tempMax: null == tempMax
           ? _value.tempMax
           : tempMax // ignore: cast_nullable_to_non_nullable
-              as double?,
-      pressure: freezed == pressure
+              as double,
+      pressure: null == pressure
           ? _value.pressure
           : pressure // ignore: cast_nullable_to_non_nullable
-              as double?,
-      humidity: freezed == humidity
+              as double,
+      humidity: null == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_TemperatureCopyWith<$Res>
-    implements $TemperatureCopyWith<$Res> {
+abstract class _$$_TemperatureCopyWith<$Res> implements $MainCopyWith<$Res> {
   factory _$$_TemperatureCopyWith(
           _$_Temperature value, $Res Function(_$_Temperature) then) =
       __$$_TemperatureCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'temp') double? temp,
-      @JsonKey(name: 'feels_like') double? feelsLike,
-      @JsonKey(name: 'temp_min') double? tempMin,
-      @JsonKey(name: 'temp_max') double? tempMax,
-      @JsonKey(name: 'pressure') double? pressure,
-      @JsonKey(name: 'humidity') double? humidity});
+      {@JsonKey(name: 'temp') double temp,
+      @JsonKey(name: 'feels_like') double feelsLike,
+      @JsonKey(name: 'temp_min') double tempMin,
+      @JsonKey(name: 'temp_max') double tempMax,
+      @JsonKey(name: 'pressure') double pressure,
+      @JsonKey(name: 'humidity') double humidity});
 }
 
 /// @nodoc
 class __$$_TemperatureCopyWithImpl<$Res>
-    extends _$TemperatureCopyWithImpl<$Res, _$_Temperature>
+    extends _$MainCopyWithImpl<$Res, _$_Temperature>
     implements _$$_TemperatureCopyWith<$Res> {
   __$$_TemperatureCopyWithImpl(
       _$_Temperature _value, $Res Function(_$_Temperature) _then)
@@ -726,38 +714,38 @@ class __$$_TemperatureCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? temp = freezed,
-    Object? feelsLike = freezed,
-    Object? tempMin = freezed,
-    Object? tempMax = freezed,
-    Object? pressure = freezed,
-    Object? humidity = freezed,
+    Object? temp = null,
+    Object? feelsLike = null,
+    Object? tempMin = null,
+    Object? tempMax = null,
+    Object? pressure = null,
+    Object? humidity = null,
   }) {
     return _then(_$_Temperature(
-      temp: freezed == temp
+      temp: null == temp
           ? _value.temp
           : temp // ignore: cast_nullable_to_non_nullable
-              as double?,
-      feelsLike: freezed == feelsLike
+              as double,
+      feelsLike: null == feelsLike
           ? _value.feelsLike
           : feelsLike // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tempMin: freezed == tempMin
+              as double,
+      tempMin: null == tempMin
           ? _value.tempMin
           : tempMin // ignore: cast_nullable_to_non_nullable
-              as double?,
-      tempMax: freezed == tempMax
+              as double,
+      tempMax: null == tempMax
           ? _value.tempMax
           : tempMax // ignore: cast_nullable_to_non_nullable
-              as double?,
-      pressure: freezed == pressure
+              as double,
+      pressure: null == pressure
           ? _value.pressure
           : pressure // ignore: cast_nullable_to_non_nullable
-              as double?,
-      humidity: freezed == humidity
+              as double,
+      humidity: null == humidity
           ? _value.humidity
           : humidity // ignore: cast_nullable_to_non_nullable
-              as double?,
+              as double,
     ));
   }
 }
@@ -765,39 +753,39 @@ class __$$_TemperatureCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Temperature implements _Temperature {
-  _$_Temperature(
-      {@JsonKey(name: 'temp') this.temp,
-      @JsonKey(name: 'feels_like') this.feelsLike,
-      @JsonKey(name: 'temp_min') this.tempMin,
-      @JsonKey(name: 'temp_max') this.tempMax,
-      @JsonKey(name: 'pressure') this.pressure,
-      @JsonKey(name: 'humidity') this.humidity});
+  const _$_Temperature(
+      {@JsonKey(name: 'temp') this.temp = 0,
+      @JsonKey(name: 'feels_like') this.feelsLike = 0,
+      @JsonKey(name: 'temp_min') this.tempMin = 0,
+      @JsonKey(name: 'temp_max') this.tempMax = 0,
+      @JsonKey(name: 'pressure') this.pressure = 0,
+      @JsonKey(name: 'humidity') this.humidity = 0});
 
   factory _$_Temperature.fromJson(Map<String, dynamic> json) =>
       _$$_TemperatureFromJson(json);
 
   @override
   @JsonKey(name: 'temp')
-  final double? temp;
+  final double temp;
   @override
   @JsonKey(name: 'feels_like')
-  final double? feelsLike;
+  final double feelsLike;
   @override
   @JsonKey(name: 'temp_min')
-  final double? tempMin;
+  final double tempMin;
   @override
   @JsonKey(name: 'temp_max')
-  final double? tempMax;
+  final double tempMax;
   @override
   @JsonKey(name: 'pressure')
-  final double? pressure;
+  final double pressure;
   @override
   @JsonKey(name: 'humidity')
-  final double? humidity;
+  final double humidity;
 
   @override
   String toString() {
-    return 'Temperature(temp: $temp, feelsLike: $feelsLike, tempMin: $tempMin, tempMax: $tempMax, pressure: $pressure, humidity: $humidity)';
+    return 'Main(temp: $temp, feelsLike: $feelsLike, tempMin: $tempMin, tempMax: $tempMax, pressure: $pressure, humidity: $humidity)';
   }
 
   @override
@@ -835,75 +823,74 @@ class _$_Temperature implements _Temperature {
   }
 }
 
-abstract class _Temperature implements Temperature {
-  factory _Temperature(
-      {@JsonKey(name: 'temp') final double? temp,
-      @JsonKey(name: 'feels_like') final double? feelsLike,
-      @JsonKey(name: 'temp_min') final double? tempMin,
-      @JsonKey(name: 'temp_max') final double? tempMax,
-      @JsonKey(name: 'pressure') final double? pressure,
-      @JsonKey(name: 'humidity') final double? humidity}) = _$_Temperature;
+abstract class _Temperature implements Main {
+  const factory _Temperature(
+      {@JsonKey(name: 'temp') final double temp,
+      @JsonKey(name: 'feels_like') final double feelsLike,
+      @JsonKey(name: 'temp_min') final double tempMin,
+      @JsonKey(name: 'temp_max') final double tempMax,
+      @JsonKey(name: 'pressure') final double pressure,
+      @JsonKey(name: 'humidity') final double humidity}) = _$_Temperature;
 
   factory _Temperature.fromJson(Map<String, dynamic> json) =
       _$_Temperature.fromJson;
 
   @override
   @JsonKey(name: 'temp')
-  double? get temp;
+  double get temp;
   @override
   @JsonKey(name: 'feels_like')
-  double? get feelsLike;
+  double get feelsLike;
   @override
   @JsonKey(name: 'temp_min')
-  double? get tempMin;
+  double get tempMin;
   @override
   @JsonKey(name: 'temp_max')
-  double? get tempMax;
+  double get tempMax;
   @override
   @JsonKey(name: 'pressure')
-  double? get pressure;
+  double get pressure;
   @override
   @JsonKey(name: 'humidity')
-  double? get humidity;
+  double get humidity;
   @override
   @JsonKey(ignore: true)
   _$$_TemperatureCopyWith<_$_Temperature> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-SunTime _$SunTimeFromJson(Map<String, dynamic> json) {
+Sys _$SysFromJson(Map<String, dynamic> json) {
   return _SunTime.fromJson(json);
 }
 
 /// @nodoc
-mixin _$SunTime {
+mixin _$Sys {
   @JsonKey(name: 'sunrise')
-  int? get sunRise => throw _privateConstructorUsedError;
+  int get sunRise => throw _privateConstructorUsedError;
   @JsonKey(name: 'sunset')
-  int? get sunSet => throw _privateConstructorUsedError;
+  int get sunSet => throw _privateConstructorUsedError;
   @JsonKey(name: 'country')
-  String get contry => throw _privateConstructorUsedError;
+  String get country => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SunTimeCopyWith<SunTime> get copyWith => throw _privateConstructorUsedError;
+  $SysCopyWith<Sys> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $SunTimeCopyWith<$Res> {
-  factory $SunTimeCopyWith(SunTime value, $Res Function(SunTime) then) =
-      _$SunTimeCopyWithImpl<$Res, SunTime>;
+abstract class $SysCopyWith<$Res> {
+  factory $SysCopyWith(Sys value, $Res Function(Sys) then) =
+      _$SysCopyWithImpl<$Res, Sys>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'sunrise') int? sunRise,
-      @JsonKey(name: 'sunset') int? sunSet,
-      @JsonKey(name: 'country') String contry});
+      {@JsonKey(name: 'sunrise') int sunRise,
+      @JsonKey(name: 'sunset') int sunSet,
+      @JsonKey(name: 'country') String country});
 }
 
 /// @nodoc
-class _$SunTimeCopyWithImpl<$Res, $Val extends SunTime>
-    implements $SunTimeCopyWith<$Res> {
-  _$SunTimeCopyWithImpl(this._value, this._then);
+class _$SysCopyWithImpl<$Res, $Val extends Sys> implements $SysCopyWith<$Res> {
+  _$SysCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -913,43 +900,42 @@ class _$SunTimeCopyWithImpl<$Res, $Val extends SunTime>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sunRise = freezed,
-    Object? sunSet = freezed,
-    Object? contry = null,
+    Object? sunRise = null,
+    Object? sunSet = null,
+    Object? country = null,
   }) {
     return _then(_value.copyWith(
-      sunRise: freezed == sunRise
+      sunRise: null == sunRise
           ? _value.sunRise
           : sunRise // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sunSet: freezed == sunSet
+              as int,
+      sunSet: null == sunSet
           ? _value.sunSet
           : sunSet // ignore: cast_nullable_to_non_nullable
-              as int?,
-      contry: null == contry
-          ? _value.contry
-          : contry // ignore: cast_nullable_to_non_nullable
+              as int,
+      country: null == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
 }
 
 /// @nodoc
-abstract class _$$_SunTimeCopyWith<$Res> implements $SunTimeCopyWith<$Res> {
+abstract class _$$_SunTimeCopyWith<$Res> implements $SysCopyWith<$Res> {
   factory _$$_SunTimeCopyWith(
           _$_SunTime value, $Res Function(_$_SunTime) then) =
       __$$_SunTimeCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'sunrise') int? sunRise,
-      @JsonKey(name: 'sunset') int? sunSet,
-      @JsonKey(name: 'country') String contry});
+      {@JsonKey(name: 'sunrise') int sunRise,
+      @JsonKey(name: 'sunset') int sunSet,
+      @JsonKey(name: 'country') String country});
 }
 
 /// @nodoc
-class __$$_SunTimeCopyWithImpl<$Res>
-    extends _$SunTimeCopyWithImpl<$Res, _$_SunTime>
+class __$$_SunTimeCopyWithImpl<$Res> extends _$SysCopyWithImpl<$Res, _$_SunTime>
     implements _$$_SunTimeCopyWith<$Res> {
   __$$_SunTimeCopyWithImpl(_$_SunTime _value, $Res Function(_$_SunTime) _then)
       : super(_value, _then);
@@ -957,22 +943,22 @@ class __$$_SunTimeCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? sunRise = freezed,
-    Object? sunSet = freezed,
-    Object? contry = null,
+    Object? sunRise = null,
+    Object? sunSet = null,
+    Object? country = null,
   }) {
     return _then(_$_SunTime(
-      sunRise: freezed == sunRise
+      sunRise: null == sunRise
           ? _value.sunRise
           : sunRise // ignore: cast_nullable_to_non_nullable
-              as int?,
-      sunSet: freezed == sunSet
+              as int,
+      sunSet: null == sunSet
           ? _value.sunSet
           : sunSet // ignore: cast_nullable_to_non_nullable
-              as int?,
-      contry: null == contry
-          ? _value.contry
-          : contry // ignore: cast_nullable_to_non_nullable
+              as int,
+      country: null == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
               as String,
     ));
   }
@@ -981,27 +967,27 @@ class __$$_SunTimeCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_SunTime implements _SunTime {
-  _$_SunTime(
-      {@JsonKey(name: 'sunrise') this.sunRise,
-      @JsonKey(name: 'sunset') this.sunSet,
-      @JsonKey(name: 'country') this.contry = ''});
+  const _$_SunTime(
+      {@JsonKey(name: 'sunrise') this.sunRise = 0,
+      @JsonKey(name: 'sunset') this.sunSet = 0,
+      @JsonKey(name: 'country') this.country = ''});
 
   factory _$_SunTime.fromJson(Map<String, dynamic> json) =>
       _$$_SunTimeFromJson(json);
 
   @override
   @JsonKey(name: 'sunrise')
-  final int? sunRise;
+  final int sunRise;
   @override
   @JsonKey(name: 'sunset')
-  final int? sunSet;
+  final int sunSet;
   @override
   @JsonKey(name: 'country')
-  final String contry;
+  final String country;
 
   @override
   String toString() {
-    return 'SunTime(sunRise: $sunRise, sunSet: $sunSet, contry: $contry)';
+    return 'Sys(sunRise: $sunRise, sunSet: $sunSet, country: $country)';
   }
 
   @override
@@ -1011,12 +997,12 @@ class _$_SunTime implements _SunTime {
             other is _$_SunTime &&
             (identical(other.sunRise, sunRise) || other.sunRise == sunRise) &&
             (identical(other.sunSet, sunSet) || other.sunSet == sunSet) &&
-            (identical(other.contry, contry) || other.contry == contry));
+            (identical(other.country, country) || other.country == country));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, sunRise, sunSet, contry);
+  int get hashCode => Object.hash(runtimeType, sunRise, sunSet, country);
 
   @JsonKey(ignore: true)
   @override
@@ -1032,23 +1018,23 @@ class _$_SunTime implements _SunTime {
   }
 }
 
-abstract class _SunTime implements SunTime {
-  factory _SunTime(
-      {@JsonKey(name: 'sunrise') final int? sunRise,
-      @JsonKey(name: 'sunset') final int? sunSet,
-      @JsonKey(name: 'country') final String contry}) = _$_SunTime;
+abstract class _SunTime implements Sys {
+  const factory _SunTime(
+      {@JsonKey(name: 'sunrise') final int sunRise,
+      @JsonKey(name: 'sunset') final int sunSet,
+      @JsonKey(name: 'country') final String country}) = _$_SunTime;
 
   factory _SunTime.fromJson(Map<String, dynamic> json) = _$_SunTime.fromJson;
 
   @override
   @JsonKey(name: 'sunrise')
-  int? get sunRise;
+  int get sunRise;
   @override
   @JsonKey(name: 'sunset')
-  int? get sunSet;
+  int get sunSet;
   @override
   @JsonKey(name: 'country')
-  String get contry;
+  String get country;
   @override
   @JsonKey(ignore: true)
   _$$_SunTimeCopyWith<_$_SunTime> get copyWith =>

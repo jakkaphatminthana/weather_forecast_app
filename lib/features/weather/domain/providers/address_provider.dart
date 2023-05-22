@@ -3,10 +3,6 @@ import 'package:flutter_weather_forecast/features/weather/data/models/address_mo
 
 import '../../data/services/address_service.dart';
 
-final addressDataProvider = StateProvider<AddressService>((ref) {
-  return ref.watch(addressServiceProvider);
-});
-
 //Result data Search
 final searchResultProvider = StateProvider<List<AddressModel>>((ref) => []);
 

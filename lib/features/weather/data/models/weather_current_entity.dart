@@ -14,11 +14,11 @@ class CurrentWeatherEntity with _$CurrentWeatherEntity {
   factory CurrentWeatherEntity({
     required Coord coord,
     required List<Weather>? weather,  //ยังงง
-    @JsonKey(name: 'main') Temperature? temperature,  //ยังงง
-    required  double visibility,
-    required  Wind wind,
-    required  Clouds clouds,
-    @JsonKey(name: 'sys') SunTime? sunTime,
+    required Main main, 
+    required double visibility,
+    required Wind wind,
+    required Clouds clouds,
+    required Sys sys,
     required int timezone,
     required int dt,
     required String name,

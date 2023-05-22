@@ -44,7 +44,7 @@ class WeatherCurrentService {
 
         // final result = CurrentWeatherModel.fromJson(response.data);
 
-        //TODO : กำหนดก้อนข้อมูลสำหรับ ยัดใส่ใน Model
+        //TODO : กำหนดก้อนข้อมูลสำหรับ ยัดใส่ใน Model แก้ปัญหา error
         var result = CurrentWeatherEntity.fromJson(response.data);
         final coordA = Coord(lat: result.coord.lat, lon: result.coord.lon);
         final weatherA = result.weather
@@ -54,13 +54,13 @@ class WeatherCurrentService {
                   description: e.description,
                 ))
             .toList();
-        final temperatureA = Temperature(
-          temp: result.temperature?.temp,
-          feelsLike: result.temperature?.feelsLike,
-          tempMax: result.temperature?.tempMax,
-          tempMin: result.temperature?.tempMin,
-          humidity: result.temperature?.humidity,
-          pressure: result.temperature?.pressure,
+        final temperatureA = Main(
+          temp: result.main.temp,
+          feelsLike: result.main.feelsLike,
+          tempMax: result.main.tempMax,
+          tempMin: result.main.tempMin,
+          humidity: result.main.humidity,
+          pressure: result.main.pressure,
         );
         final windA = Wind(
           speed: result.wind.speed,
@@ -68,20 +68,20 @@ class WeatherCurrentService {
           gust: result.wind.gust,
         );
         final cloudA = Clouds(cloud: result.clouds.cloud);
-        final sunTimeA = SunTime(
-          sunSet: result.sunTime?.sunSet,
-          sunRise: result.sunTime?.sunRise,
-          contry: result.sunTime!.contry,
+        final sunTimeA = Sys(
+          sunSet: result.sys.sunSet,
+          sunRise: result.sys.sunRise,
+          country: result.sys.country,
         );
 
         final display = CurrentWeatherEntity(
           coord: coordA,
           weather: weatherA,
-          temperature: temperatureA,
+          main: temperatureA,
           visibility: result.visibility,
           wind: windA,
           clouds: cloudA,
-          sunTime: sunTimeA,
+          sys: sunTimeA,
           timezone: result.timezone,
           dt: result.dt,
           name: result.name,

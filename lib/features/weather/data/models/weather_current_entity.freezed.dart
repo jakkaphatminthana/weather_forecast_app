@@ -22,13 +22,11 @@ CurrentWeatherEntity _$CurrentWeatherEntityFromJson(Map<String, dynamic> json) {
 mixin _$CurrentWeatherEntity {
   Coord get coord => throw _privateConstructorUsedError;
   List<Weather>? get weather => throw _privateConstructorUsedError; //ยังงง
-  @JsonKey(name: 'main')
-  Temperature? get temperature => throw _privateConstructorUsedError; //ยังงง
+  Main get main => throw _privateConstructorUsedError;
   double get visibility => throw _privateConstructorUsedError;
   Wind get wind => throw _privateConstructorUsedError;
   Clouds get clouds => throw _privateConstructorUsedError;
-  @JsonKey(name: 'sys')
-  SunTime? get sunTime => throw _privateConstructorUsedError;
+  Sys get sys => throw _privateConstructorUsedError;
   int get timezone => throw _privateConstructorUsedError;
   int get dt => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
@@ -48,20 +46,20 @@ abstract class $CurrentWeatherEntityCopyWith<$Res> {
   $Res call(
       {Coord coord,
       List<Weather>? weather,
-      @JsonKey(name: 'main') Temperature? temperature,
+      Main main,
       double visibility,
       Wind wind,
       Clouds clouds,
-      @JsonKey(name: 'sys') SunTime? sunTime,
+      Sys sys,
       int timezone,
       int dt,
       String name});
 
   $CoordCopyWith<$Res> get coord;
-  $TemperatureCopyWith<$Res>? get temperature;
+  $MainCopyWith<$Res> get main;
   $WindCopyWith<$Res> get wind;
   $CloudsCopyWith<$Res> get clouds;
-  $SunTimeCopyWith<$Res>? get sunTime;
+  $SysCopyWith<$Res> get sys;
 }
 
 /// @nodoc
@@ -80,11 +78,11 @@ class _$CurrentWeatherEntityCopyWithImpl<$Res,
   $Res call({
     Object? coord = null,
     Object? weather = freezed,
-    Object? temperature = freezed,
+    Object? main = null,
     Object? visibility = null,
     Object? wind = null,
     Object? clouds = null,
-    Object? sunTime = freezed,
+    Object? sys = null,
     Object? timezone = null,
     Object? dt = null,
     Object? name = null,
@@ -98,10 +96,10 @@ class _$CurrentWeatherEntityCopyWithImpl<$Res,
           ? _value.weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as Temperature?,
+      main: null == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as Main,
       visibility: null == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -114,10 +112,10 @@ class _$CurrentWeatherEntityCopyWithImpl<$Res,
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
               as Clouds,
-      sunTime: freezed == sunTime
-          ? _value.sunTime
-          : sunTime // ignore: cast_nullable_to_non_nullable
-              as SunTime?,
+      sys: null == sys
+          ? _value.sys
+          : sys // ignore: cast_nullable_to_non_nullable
+              as Sys,
       timezone: null == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
@@ -143,13 +141,9 @@ class _$CurrentWeatherEntityCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $TemperatureCopyWith<$Res>? get temperature {
-    if (_value.temperature == null) {
-      return null;
-    }
-
-    return $TemperatureCopyWith<$Res>(_value.temperature!, (value) {
-      return _then(_value.copyWith(temperature: value) as $Val);
+  $MainCopyWith<$Res> get main {
+    return $MainCopyWith<$Res>(_value.main, (value) {
+      return _then(_value.copyWith(main: value) as $Val);
     });
   }
 
@@ -171,13 +165,9 @@ class _$CurrentWeatherEntityCopyWithImpl<$Res,
 
   @override
   @pragma('vm:prefer-inline')
-  $SunTimeCopyWith<$Res>? get sunTime {
-    if (_value.sunTime == null) {
-      return null;
-    }
-
-    return $SunTimeCopyWith<$Res>(_value.sunTime!, (value) {
-      return _then(_value.copyWith(sunTime: value) as $Val);
+  $SysCopyWith<$Res> get sys {
+    return $SysCopyWith<$Res>(_value.sys, (value) {
+      return _then(_value.copyWith(sys: value) as $Val);
     });
   }
 }
@@ -193,11 +183,11 @@ abstract class _$$_CurrentWeatherEntityCopyWith<$Res>
   $Res call(
       {Coord coord,
       List<Weather>? weather,
-      @JsonKey(name: 'main') Temperature? temperature,
+      Main main,
       double visibility,
       Wind wind,
       Clouds clouds,
-      @JsonKey(name: 'sys') SunTime? sunTime,
+      Sys sys,
       int timezone,
       int dt,
       String name});
@@ -205,13 +195,13 @@ abstract class _$$_CurrentWeatherEntityCopyWith<$Res>
   @override
   $CoordCopyWith<$Res> get coord;
   @override
-  $TemperatureCopyWith<$Res>? get temperature;
+  $MainCopyWith<$Res> get main;
   @override
   $WindCopyWith<$Res> get wind;
   @override
   $CloudsCopyWith<$Res> get clouds;
   @override
-  $SunTimeCopyWith<$Res>? get sunTime;
+  $SysCopyWith<$Res> get sys;
 }
 
 /// @nodoc
@@ -227,11 +217,11 @@ class __$$_CurrentWeatherEntityCopyWithImpl<$Res>
   $Res call({
     Object? coord = null,
     Object? weather = freezed,
-    Object? temperature = freezed,
+    Object? main = null,
     Object? visibility = null,
     Object? wind = null,
     Object? clouds = null,
-    Object? sunTime = freezed,
+    Object? sys = null,
     Object? timezone = null,
     Object? dt = null,
     Object? name = null,
@@ -245,10 +235,10 @@ class __$$_CurrentWeatherEntityCopyWithImpl<$Res>
           ? _value._weather
           : weather // ignore: cast_nullable_to_non_nullable
               as List<Weather>?,
-      temperature: freezed == temperature
-          ? _value.temperature
-          : temperature // ignore: cast_nullable_to_non_nullable
-              as Temperature?,
+      main: null == main
+          ? _value.main
+          : main // ignore: cast_nullable_to_non_nullable
+              as Main,
       visibility: null == visibility
           ? _value.visibility
           : visibility // ignore: cast_nullable_to_non_nullable
@@ -261,10 +251,10 @@ class __$$_CurrentWeatherEntityCopyWithImpl<$Res>
           ? _value.clouds
           : clouds // ignore: cast_nullable_to_non_nullable
               as Clouds,
-      sunTime: freezed == sunTime
-          ? _value.sunTime
-          : sunTime // ignore: cast_nullable_to_non_nullable
-              as SunTime?,
+      sys: null == sys
+          ? _value.sys
+          : sys // ignore: cast_nullable_to_non_nullable
+              as Sys,
       timezone: null == timezone
           ? _value.timezone
           : timezone // ignore: cast_nullable_to_non_nullable
@@ -287,11 +277,11 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
   _$_CurrentWeatherEntity(
       {required this.coord,
       required final List<Weather>? weather,
-      @JsonKey(name: 'main') this.temperature,
+      required this.main,
       required this.visibility,
       required this.wind,
       required this.clouds,
-      @JsonKey(name: 'sys') this.sunTime,
+      required this.sys,
       required this.timezone,
       required this.dt,
       required this.name})
@@ -314,9 +304,7 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
 
 //ยังงง
   @override
-  @JsonKey(name: 'main')
-  final Temperature? temperature;
-//ยังงง
+  final Main main;
   @override
   final double visibility;
   @override
@@ -324,8 +312,7 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
   @override
   final Clouds clouds;
   @override
-  @JsonKey(name: 'sys')
-  final SunTime? sunTime;
+  final Sys sys;
   @override
   final int timezone;
   @override
@@ -335,7 +322,7 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
 
   @override
   String toString() {
-    return 'CurrentWeatherEntity(coord: $coord, weather: $weather, temperature: $temperature, visibility: $visibility, wind: $wind, clouds: $clouds, sunTime: $sunTime, timezone: $timezone, dt: $dt, name: $name)';
+    return 'CurrentWeatherEntity(coord: $coord, weather: $weather, main: $main, visibility: $visibility, wind: $wind, clouds: $clouds, sys: $sys, timezone: $timezone, dt: $dt, name: $name)';
   }
 
   @override
@@ -345,13 +332,12 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
             other is _$_CurrentWeatherEntity &&
             (identical(other.coord, coord) || other.coord == coord) &&
             const DeepCollectionEquality().equals(other._weather, _weather) &&
-            (identical(other.temperature, temperature) ||
-                other.temperature == temperature) &&
+            (identical(other.main, main) || other.main == main) &&
             (identical(other.visibility, visibility) ||
                 other.visibility == visibility) &&
             (identical(other.wind, wind) || other.wind == wind) &&
             (identical(other.clouds, clouds) || other.clouds == clouds) &&
-            (identical(other.sunTime, sunTime) || other.sunTime == sunTime) &&
+            (identical(other.sys, sys) || other.sys == sys) &&
             (identical(other.timezone, timezone) ||
                 other.timezone == timezone) &&
             (identical(other.dt, dt) || other.dt == dt) &&
@@ -364,11 +350,11 @@ class _$_CurrentWeatherEntity implements _CurrentWeatherEntity {
       runtimeType,
       coord,
       const DeepCollectionEquality().hash(_weather),
-      temperature,
+      main,
       visibility,
       wind,
       clouds,
-      sunTime,
+      sys,
       timezone,
       dt,
       name);
@@ -392,11 +378,11 @@ abstract class _CurrentWeatherEntity implements CurrentWeatherEntity {
   factory _CurrentWeatherEntity(
       {required final Coord coord,
       required final List<Weather>? weather,
-      @JsonKey(name: 'main') final Temperature? temperature,
+      required final Main main,
       required final double visibility,
       required final Wind wind,
       required final Clouds clouds,
-      @JsonKey(name: 'sys') final SunTime? sunTime,
+      required final Sys sys,
       required final int timezone,
       required final int dt,
       required final String name}) = _$_CurrentWeatherEntity;
@@ -409,17 +395,15 @@ abstract class _CurrentWeatherEntity implements CurrentWeatherEntity {
   @override
   List<Weather>? get weather;
   @override //ยังงง
-  @JsonKey(name: 'main')
-  Temperature? get temperature;
-  @override //ยังงง
+  Main get main;
+  @override
   double get visibility;
   @override
   Wind get wind;
   @override
   Clouds get clouds;
   @override
-  @JsonKey(name: 'sys')
-  SunTime? get sunTime;
+  Sys get sys;
   @override
   int get timezone;
   @override
