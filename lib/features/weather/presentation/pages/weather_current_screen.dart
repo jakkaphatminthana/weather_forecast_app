@@ -1,9 +1,5 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_weather_forecast/features/weather/data/services/weather_current_service.dart';
-import 'package:flutter_weather_forecast/features/weather/domain/providers/address_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/common_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/weather_current_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/utils/datetime_format.dart';
@@ -28,8 +24,8 @@ class WeatherCurrentScreen extends ConsumerStatefulWidget {
 class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
   //Swap Value
   void SwapModeCelsius() {
-    final isCelsiu = ref.read(isCelsiusProvider);
-    if (isCelsiu) {
+    final isCelsius = ref.read(isCelsiusProvider);
+    if (isCelsius) {
       ref.read(isCelsiusProvider.notifier).state = false;
     } else {
       ref.read(isCelsiusProvider.notifier).state = true;
@@ -48,7 +44,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
   void navigatorToSearch() {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const AddressSearchScreen()),
+      MaterialPageRoute(builder: (context) => AddressSearchScreen()),
     );
   }
 

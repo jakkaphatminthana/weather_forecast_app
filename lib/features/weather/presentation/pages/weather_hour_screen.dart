@@ -24,8 +24,8 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
 
   //Swap Value
   void SwapModeCelsius() {
-    final isCelsiu = ref.read(isCelsiusProvider);
-    if (isCelsiu) {
+    final isCelsius = ref.read(isCelsiusProvider);
+    if (isCelsius) {
       ref.read(isCelsiusProvider.notifier).state = false;
     } else {
       ref.read(isCelsiusProvider.notifier).state = true;
@@ -54,15 +54,15 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
       body: data.when(
         data: (_data) {
           final index = ref.watch(cardIndexProvider);
-          final temp = _data.list[index].main?.temp;
-          final temp_feel = _data.list[index].main?.feelsLike;
+          final temp = _data.list[index].main.temp;
+          final temp_feel = _data.list[index].main.feelsLike;
           final weatherStatus = _data.list[index].weather?.first.main;
-          final humidity = _data.list[index].main?.humidity;
-          final clouds = _data.list[index].clouds?.cloud;
-          final wind = _data.list[index].wind?.speed;
-          final pressure = _data.list[index].main?.pressure;
+          final humidity = _data.list[index].main.humidity;
+          final clouds = _data.list[index].clouds.cloud;
+          final wind = _data.list[index].wind.speed;
+          final pressure = _data.list[index].main.pressure;
           final visibility = _data.list[index].visibility;
-          final grnd_level = _data.list[index].main?.grnd_level;
+          final grnd_level = _data.list[index].main.grnd_level;
           final weatherId = _data.list[index].weather?.first.id;
 
           bool sun =
@@ -125,7 +125,7 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                                       Text(
                                         ConvertTempText(
                                           isCelsius: isCelsius,
-                                          value: temp as double,
+                                          value: temp,
                                           unit: true,
                                         ),
                                         style: text35_black_B,
@@ -151,14 +151,14 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                                       title: 'Feels like',
                                       value: ConvertTempText(
                                         isCelsius: isCelsius,
-                                        value: temp_feel as double,
+                                        value: temp_feel,
                                         unit: false,
                                       ),
                                     ),
                                     HourDetailListTile(
                                       svg: 'assets/svgs/icons8-humidity-48.svg',
                                       title: 'Humidity',
-                                      value: '${humidity?.toInt()}%',
+                                      value: '${humidity.toInt()}%',
                                     ),
                                     HourDetailListTile(
                                       svg: 'assets/svgs/icons8-cloud-48.svg',
@@ -174,13 +174,13 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                                       svg:
                                           'assets/svgs/icons8-pressure-gauge-48.svg',
                                       title: 'Pressure',
-                                      value: '${pressure?.toInt()} hPa',
+                                      value: '${pressure.toInt()} hPa',
                                     ),
                                     HourDetailListTile(
                                       svg:
                                           'assets/svgs/icons8-sea-waves-50.svg',
                                       title: 'Visibility',
-                                      value: '${grnd_level?.toInt()} hPa',
+                                      value: '${grnd_level.toInt()} hPa',
                                     ),
                                   ],
                                 ).toList(),

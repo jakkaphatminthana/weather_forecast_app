@@ -42,7 +42,7 @@ class _StartScreenState extends ConsumerState<StartScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => const AddressSearchScreen(),
+        builder: (context) => AddressSearchScreen(),
       ),
     );
   }

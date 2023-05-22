@@ -9,7 +9,6 @@ import 'package:flutter_weather_forecast/resources/theme_color.dart';
 import 'weather_current_screen.dart';
 
 class AddressSearchScreen extends ConsumerStatefulWidget {
-  const AddressSearchScreen({super.key});
 
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TestScreen3State();

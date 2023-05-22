@@ -9,21 +9,21 @@ part of 'weather_hour_item.dart';
 _$_WeatherHourItem _$$_WeatherHourItemFromJson(Map<String, dynamic> json) =>
     _$_WeatherHourItem(
       main: json['main'] == null
-          ? null
+          ? const Main()
           : Main.fromJson(json['main'] as Map<String, dynamic>),
       weather: (json['weather'] as List<dynamic>?)
           ?.map((e) => Weather.fromJson(e as Map<String, dynamic>))
           .toList(),
       clouds: json['clouds'] == null
-          ? null
+          ? const Clouds()
           : Clouds.fromJson(json['clouds'] as Map<String, dynamic>),
       wind: json['wind'] == null
-          ? null
+          ? const Wind()
           : Wind.fromJson(json['wind'] as Map<String, dynamic>),
-      visibility: json['visibility'] as int?,
-      pop: (json['pop'] as num?)?.toDouble(),
-      dt: json['dt'] as int?,
-      dtText: json['dt_text'] as String?,
+      visibility: json['visibility'] as int? ?? 0,
+      pop: (json['pop'] as num?)?.toDouble() ?? 0,
+      dt: json['dt'] as int? ?? 0,
+      dtText: json['dt_text'] as String? ?? '',
     );
 
 Map<String, dynamic> _$$_WeatherHourItemToJson(_$_WeatherHourItem instance) =>
