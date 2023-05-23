@@ -5,6 +5,7 @@ import 'package:flutter_weather_forecast/features/weather/domain/providers/weath
 import 'package:flutter_weather_forecast/features/weather/domain/utils/datetime_format.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/pages/weather_hour_screen.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/detail_card.dart';
+import 'package:flutter_weather_forecast/features/weather/presentation/widgets/current_temp_icon.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/temperature_text.dart';
 import 'package:flutter_weather_forecast/resources/theme_color.dart';
 import 'package:flutter_weather_forecast/resources/theme_font.dart';
@@ -133,7 +134,7 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         //Status weather
-                        Text(status!, style: text20_black_B500),
+                        Text(status ?? '', style: text20_black_B500),
 
                         //Temperate
                         Text(
@@ -158,39 +159,15 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                               style: text16_black,
                             ),
                             const SizedBox(width: 5.0),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.arrow_upward,
-                                  color: Color(0xFFFA4747),
-                                  size: 24,
-                                ),
-                                Text(
-                                  ConvertTempText(
-                                    isCelsius: isCelsius,
-                                    value: tempMax,
-                                    unit: false,
-                                  ),
-                                  style: text16_black,
-                                )
-                              ],
+                            TempIcon(
+                              temp: tempMax,
+                              icons: Icons.arrow_upward,
+                              color: const Color(0xFFFA4747),
                             ),
-                            Row(
-                              children: [
-                                const Icon(
-                                  Icons.arrow_downward,
-                                  color: Color(0xFF1D4393),
-                                  size: 24,
-                                ),
-                                Text(
-                                  ConvertTempText(
-                                    isCelsius: isCelsius,
-                                    value: tempMin,
-                                    unit: false,
-                                  ),
-                                  style: text16_black,
-                                )
-                              ],
+                            TempIcon(
+                              temp: tempMin,
+                              icons: Icons.arrow_downward,
+                              color: const Color(0xFF1D4393),
                             ),
                           ],
                         ),
@@ -212,7 +189,13 @@ class _WeatherCurrentScreenState extends ConsumerState<WeatherCurrentScreen> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Text('Details more', style: text16_white_B),
-                                Text('24 Hours>', style: text16_white_BU),
+                                GestureDetector(
+                                  onTap: () => navigatorToHour(),
+                                  child: Text(
+                                    '24 Hours>',
+                                    style: text16_white_BU,
+                                  ),
+                                ),
                               ],
                             ),
                             const SizedBox(height: 5.0),

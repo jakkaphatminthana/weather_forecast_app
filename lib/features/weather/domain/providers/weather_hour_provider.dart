@@ -4,7 +4,7 @@ import 'package:flutter_weather_forecast/features/weather/data/services/weather_
 import '../../data/models/weather_hour_item.dart';
 import 'address_provider.dart';
 
-final weatherHourFutureProvider = FutureProvider.autoDispose(
+final weatherHourFutureProvider = FutureProvider(
   (ref) async {
     return ref.watch(weatherHourServiceProvider).getHourWeather(
           lat: ref.watch(latProvider),

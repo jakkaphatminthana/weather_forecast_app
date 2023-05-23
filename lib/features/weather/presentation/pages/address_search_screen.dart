@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_weather_forecast/features/weather/data/models/address_model.dart';
 import 'package:flutter_weather_forecast/features/weather/data/services/address_service.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/address_provider.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/empty_data.dart';
@@ -98,7 +99,9 @@ class _TestScreen3State extends ConsumerState<AddressSearchScreen> {
         ],
       ),
       body: (searchResult.length == 0)
-          ? EmptyDataWidget
+          ? const Center(
+              child: CircularProgressIndicator(),
+            )
           : ListView.builder(
               itemCount: searchResult.length,
               itemBuilder: (context, index) {

@@ -109,10 +109,10 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  //Temperateture
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
+                                      //Image Status
                                       SvgPicture.asset(
                                         WeatherStatusToSVG(
                                           id: weatherId as int,
@@ -122,6 +122,8 @@ class _WeatherHourScreenState extends ConsumerState<WeatherHourScreen> {
                                         height: 80,
                                       ),
                                       const SizedBox(width: 5),
+
+                                      //Temperature value
                                       Text(
                                         ConvertTempText(
                                           isCelsius: isCelsius,
