@@ -53,7 +53,7 @@ Widget HourCard({
   });
 }
 //======================================================================================================================
-//Action
+//Action Style
 BoxDecoration _actionStyle() {
   return BoxDecoration(
     color: ThemeColor.cardActionColor,
@@ -68,7 +68,7 @@ BoxDecoration _actionStyle() {
   );
 }
 
-//Normal
+//Normal Style
 BoxDecoration _normalStyle() {
   return BoxDecoration(
     color: ThemeColor.backgroundColor,

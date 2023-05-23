@@ -47,6 +47,7 @@ dependencies:
   geolocator: ^9.0.2
   http: ^0.13.6
   intl: ^0.18.1
+  font_awesome_flutter: ^10.4.0
 
 dev_dependencies:
   flutter_test:

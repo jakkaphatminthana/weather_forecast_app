@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_weather_forecast/features/weather/data/services/address_service.dart';
 import 'package:flutter_weather_forecast/features/weather/domain/providers/address_provider.dart';
+import 'package:flutter_weather_forecast/features/weather/presentation/widgets/empty_data.dart';
 import 'package:flutter_weather_forecast/features/weather/presentation/widgets/search_listtile.dart';
 import 'package:flutter_weather_forecast/resources/theme_color.dart';
 import 'weather_current_screen.dart';
 
 class AddressSearchScreen extends ConsumerStatefulWidget {
-
   @override
   ConsumerState<ConsumerStatefulWidget> createState() => _TestScreen3State();
 }
@@ -97,29 +97,31 @@ class _TestScreen3State extends ConsumerState<AddressSearchScreen> {
           ),
         ],
       ),
-      body: ListView.builder(
-        itemCount: searchResult.length,
-        itemBuilder: (context, index) {
-          final address = searchResult[index];
+      body: (searchResult.length == 0)
+          ? EmptyDataWidget
+          : ListView.builder(
+              itemCount: searchResult.length,
+              itemBuilder: (context, index) {
+                final address = searchResult[index];
 
-          //TODO : ListTile City
-          return GestureDetector(
-            onTap: () {
-              //update lon, lat
-              updateLatLon(lat: address.lat, lon: address.lon);
-              log('cityOnSearch : ${address.name}');
+                //TODO : ListTile City
+                return GestureDetector(
+                  onTap: () {
+                    //update lon, lat
+                    updateLatLon(lat: address.lat, lon: address.lon);
+                    log('cityOnSearch : ${address.name}');
 
-              //go to weather current page
-              navigatorPage();
-            },
-            child: SearchResultListTile(
-              title: address.name,
-              country: address.country,
-              context: context,
+                    //go to weather current page
+                    navigatorPage();
+                  },
+                  child: SearchResultListTile(
+                    title: address.name,
+                    country: address.country,
+                    context: context,
+                  ),
+                );
+              },
             ),
-          );
-        },
-      ),
     );
   }
 }
