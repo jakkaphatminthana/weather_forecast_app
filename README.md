@@ -15,6 +15,10 @@ For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
 
-# Example App:
-![](https://github.com/jakkaphatminthana/weather_forecast_app/assets/58208814/98ace8b2-2670-4088-94e9-52b33a7136b8.gif)
+# Example:
+
+
+https://github.com/jakkaphatminthana/weather_forecast_app/assets/58208814/7b206651-b864-4e7f-b7d9-46fa7b70aa3d
+
+
 
